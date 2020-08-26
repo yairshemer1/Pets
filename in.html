@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>function MySend() {
+            var UserName = document.getElementById("UserName");
+            var Password = document.getElementById("Password");
+	var URL="jla.svc/GetToken";
+            var params = "UserName=" + UserName.value + "&Password=" + Password.value;
+try
+{
+//$.post(URL,params,function(data,status){
+  //    alert("Data: " + data + "\nStatus: " + status);
+  //  });
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "jla.svc/GetToken", true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.onreadystatechange = function () {
+if (this.readyState == 4) {
+    if (this.responseText == '{"d":""}') {
+                        window.location = "jla.html";
+                    }
+           else {
+               //
+                    }
+                }
+            };
+            xhttp.send(params);
+}
+catch(ex)
+{
+	alert("ex"+ex.message)
+}
+        }</script>
+</head>
+<body onload='document.getElementById("UserName").focus();' style="background-color:magenta;">
+    <hr /><br /><br /><h1>GetToken   </h1><form id="df" method="post" action="jla.svc/GetToken">
+        username <input type="text" name="UserName" value="" id="UserName" /><br /><br />
+        password <input type="text" name="Password" value="" id="Password" /><br /><br />
+        <input type="button" onclick="MySend();" value="שליחה" style="width:300px;" />
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
